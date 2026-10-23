@@ -3,7 +3,7 @@
 Speak into your browser mic — in Hindi, English or a mix — and watch the words appear live.
 Every session is stored in a relational database and managed from a history dashboard (create / read / update / delete, search, pagination, copy, download).
 
-**Stack:** Java 17 · Spring Boot 3.3 (Web, WebSocket, Data JPA, Validation) · H2 / PostgreSQL / MySQL · vanilla JS + AudioWorklet (no build step)
+**Stack:** Java 17 · Spring Boot 4.1.2 (Web, WebSocket, Data JPA, Validation) · H2 / PostgreSQL / MySQL · vanilla JS + AudioWorklet (no build step)
 
 ## How it works
 
