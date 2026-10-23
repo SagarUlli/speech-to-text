@@ -1,0 +1,25 @@
+# Render Blueprint: Docker web service + Postgres.  Dashboard > New > Blueprint > pick this repo.
+services:
+  - type: web
+    name: bol-live-transcription
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/engines
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false            # paste your key in the Render dashboard
+      - key: SPRING_PROFILES_ACTIVE
+        value: postgres
+      - key: DB_HOST
+        fromDatabase: { name: bol-db, property: host }
+      - key: DB_PORT
+        fromDatabase: { name: bol-db, property: port }
+      - key: DB_NAME
+        fromDatabase: { name: bol-db, property: database }
+      - key: DB_USER
+        fromDatabase: { name: bol-db, property: user }
+      - key: DB_PASSWORD
+        fromDatabase: { name: bol-db, property: password }
+databases:
+  - name: bol-db
+    plan: free

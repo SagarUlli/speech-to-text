@@ -1,0 +1,28 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  datasource:
+    # Works with H2 (default, zero setup), PostgreSQL or MySQL - just set DB_URL.
+    #   jdbc:postgresql://host:5432/dbname
+    #   jdbc:mysql://host:3306/dbname
+    url: ${DB_URL:jdbc:h2:mem:transcribe;DB_CLOSE_DELAY=-1}
+    username: ${DB_USER:sa}
+    password: ${DB_PASSWORD:}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+
+transcribe:
+  default-engine: ${TRANSCRIBE_DEFAULT_ENGINE:gemini}
+  gemini:
+    api-key: ${GEMINI_API_KEY:}
+    model: ${GEMINI_MODEL:gemini-3.5-transcribe-live}
+  whisper:
+    # Base URL of a self-hosted OpenAI-compatible STT server (Speaches / faster-whisper-server)
+    base-url: ${WHISPER_BASE_URL:}
+    model: ${WHISPER_MODEL:Systran/faster-whisper-small}
+    chunk-seconds: ${WHISPER_CHUNK_SECONDS:4}
+    prompt: ${WHISPER_PROMPT:Namaste, aap kaise hain? Hello, main theek hoon. Mixed Hindi and English conversation.}
+    api-key: ${WHISPER_API_KEY:}
